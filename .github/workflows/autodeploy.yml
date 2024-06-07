@@ -1,0 +1,25 @@
+name: AutoDeploy
+
+# Triggers deployment of code to test servers
+on:
+  workflow_call:
+    # inputs: will be the various git ones
+    inputs:
+      git_repo:
+        description: "The github repository"
+        required: True
+        type: string
+    secrets:
+      token:
+        description: "Token sent to service to authorize deployment"
+        required: true
+      servers:
+        description: "Comma separated list of servers to contact"
+        required: true
+
+jobs:
+  deployment_job:
+    runs-on: ubuntu-latest
+    steps:
+      - id: "Output_vars"
+        run: echo "Repo is ${{inputs.git_repo}}"
