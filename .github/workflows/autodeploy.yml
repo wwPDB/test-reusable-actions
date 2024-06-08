@@ -18,7 +18,7 @@ on:
         required: true
 
 jobs:
-  deployment_job:
+  deploy_dev:
     runs-on: ubuntu-latest
     steps:
       - id: "Output_vars"
