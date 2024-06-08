@@ -10,12 +10,30 @@ on:
         required: false
         default: ${{github.repository}}
         type: string
+      git_banch:
+        description: "The branch the commit is on"
+        required: false
+        default: ${{github.ref_name}}
+        type: string
+      git_sha:
+        description: "SHA of commit"
+        required: false
+        default: ${{github.sha}}
+        type: string
+      git_actor:
+        description: "The user making ht commit"
+        required: false
+        default: ${{github.actor}}
+        type: string
+      git_owner:
+        description: "The owner/organization of repository"
+        required: false
+        default: ${{github.repository_owner}}
+        type: string
+
     secrets:
-      token:
-        description: "Token sent to service to authorize deployment"
-        required: true
-      servers:
-        description: "Comma separated list of servers to contact"
+      server_token:
+        description: "json string of server:key"
         required: true
 
 jobs:
@@ -23,6 +41,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: "Output_vars"
-        run: echo "Repo is ${{inputs.git_repo}}"
-      - id: "Inherited"
-        run: echo "Inhirit ${{github.repository}}"
+        run: echo "Repo is ${{inputs.git_repo}} sha is ${{inputs.git_sha}} actor is ${{inputs.git_actor}} branch is ${{inputs.git_banch}} ownser is ${{inputs.git_owner}}"
