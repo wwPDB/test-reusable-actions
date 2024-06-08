@@ -6,8 +6,9 @@ on:
     # inputs: will be the various git ones
     inputs:
       git_repo:
-        description: "The github repository"
-        required: True
+        description: "The github repository to act on"
+        required: false
+        default: ${{github.repository}}
         type: string
     secrets:
       token:
