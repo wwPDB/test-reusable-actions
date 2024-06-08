@@ -23,3 +23,5 @@ jobs:
     steps:
       - id: "Output_vars"
         run: echo "Repo is ${{inputs.git_repo}}"
+      - id: "Inherited"
+        run: echo "Inhirit ${{github.repository}}"
